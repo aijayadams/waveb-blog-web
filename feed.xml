@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>waveB blog</title>
+    <description>A collection of things that I've tried my hand at.</description>
+    <link>https://web.waveb.io/blog//</link>
+    <atom:link href="https://web.waveb.io/blog//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Mon, 03 Sep 2018 14:45:03 -0700</pubDate>
+    <lastBuildDate>Mon, 03 Sep 2018 14:45:03 -0700</lastBuildDate>
+    <generator>Jekyll v3.8.3</generator>
+    
+      <item>
+        <title>Autoblinds</title>
+        <description>&lt;h3 id=&quot;a-simple-project-to-control-my-blinds&quot;&gt;A simple project to control my blinds&lt;/h3&gt;
+
+&lt;p&gt;The repository describes three the components I use to control the blinds in my room.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;3D Printable gear and brackets&lt;/li&gt;
+  &lt;li&gt;Controller running on rPi Zero W&lt;/li&gt;
+  &lt;li&gt;Alexa SmartHome Skill&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;3d-objects&quot;&gt;3D Objects&lt;/h2&gt;
+
+&lt;p&gt;This was my first 3D printing project, and the first time I’ve used 3D CAD tools, so there are probably lots of bad practises here, feel free to use and improve these parts as you need.&lt;/p&gt;
+
+&lt;p&gt;In one of my earlier blind-brackets I used a &lt;a href=&quot;https://www.thingiverse.com/thing:1110041&quot;&gt;NEMA17&lt;/a&gt; part by &lt;a href=&quot;https://www.thingiverse.com/Zappyguy111/about&quot;&gt;Zappyguy111&lt;/a&gt;. As it happens this part didn’t have quite the right dimensions for my particular NEMA17, so I’ve included a modified version of this SCADs here.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-gear&quot;&gt;The gear&lt;/h3&gt;
+
+&lt;p&gt;The gear I’ve provided here is a perfect match to the chain my blinds use. Not being an expert on the topic, I don’t know how likely it is that you’ll be able to reuse this part with any success.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/autoblinds/gear.PNG&quot; width=&quot;656&quot; layout=&quot;responsive&quot; alt=&quot;&quot; class=&quot;mb3&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;the-bracket&quot;&gt;The bracket&lt;/h3&gt;
+
+&lt;p&gt;There are two versions of the bracket included, the first, OpenSCAD based model is a minimal simple bracket for holding the NEAM17 and gear.&lt;/p&gt;
+
+&lt;p&gt;The second is a much larger construction that also contains a cavity for holding the electronics. This is the bracket I’m using, but I decided to venture out and learn a little about Autodesk Fusion 360 to create it.&lt;/p&gt;
+
+&lt;p&gt;Full bracket: https://a360.co/2Gnt3KY&lt;/p&gt;
+
+&lt;h2 id=&quot;raspberry-pi-zero-w-controller&quot;&gt;Raspberry Pi Zero W controller&lt;/h2&gt;
+
+&lt;p&gt;I’m using a rPiZeroW to control the motor in the blinds just because I had one sitting on my desk at the time. I am well aware this could easily be done with an ESP32 or any number of lesser parts.&lt;/p&gt;
+
+&lt;p&gt;However since I did have a device that runs full Linux my controller takes advantage of the fact and uses some higher level libraries for convenience that make the code rather specific to the platform.&lt;/p&gt;
+
+&lt;h2 id=&quot;motor-and-driver&quot;&gt;Motor and Driver&lt;/h2&gt;
+
+&lt;p&gt;After a bit of measurement I found that &lt;a href=&quot;https://www.amazon.com/gp/product/B0716S32G4/ref=oh_aui_detailpage_o09_s00?ie=UTF8&amp;amp;psc=1&quot;&gt;these&lt;/a&gt; 40Ncm NEMA17 motors would do a find job driving my blinds with the ⌀30mm gear. At $10 a motor there are cheaper options, but these work and thanks the Prime they are only 1 day away!&lt;/p&gt;
+
+&lt;p&gt;Now that we have motors we need to drive them. I did a little iteration on this point.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/images/autoblinds/driver.jpg&quot; width=&quot;656&quot; layout=&quot;responsive&quot; alt=&quot;&quot; class=&quot;mb3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;After some experimentation I learned what was perhaps the very clear and inevitable to anyone looking in from the outside. Dedicated stepper IC is smarter than Aijay - best just use one. So I picked up some &lt;a href=&quot;https://www.amazon.com/Elegoo-Stepstick-Stepper-Printer-Robotics/dp/B01GJJGRF2/ref=pd_bxgy_328_img_2?_encoding=UTF8&amp;amp;pd_rd_i=B01GJJGRF2&amp;amp;pd_rd_r=SDF0A2E9CBVYZ0JKECQZ&amp;amp;pd_rd_w=6Vk86&amp;amp;pd_rd_wg=LCmu1&amp;amp;psc=1&amp;amp;refRID=SDF0A2E9CBVYZ0JKECQZ&quot;&gt;Elegoo Stepsticks&lt;/a&gt; at about $2 each. This little module has an A4988 which I am operating in 1/8th step mode to drive my blinds.&lt;/p&gt;
+
+&lt;h2 id=&quot;alexa-smarthome-skill&quot;&gt;Alexa SmartHome Skill&lt;/h2&gt;
+
+&lt;p&gt;This part is only interesting if you have grown so dependent on your Amazon Alexa that you can’t imagine having to reach for a device to control your smart devices anymore. I put this in it’s own &lt;a href=&quot;https://github.com/aijayadams/autoblinds/tree/master/alexa-smarthome&quot;&gt;README&lt;/a&gt; if you’re interested.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 29 Nov 2017 20:00:00 -0800</pubDate>
+        <link>https://web.waveb.io/blog//autoblinds</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//autoblinds</guid>
+        
+        <category>3d-printing</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Junos OS PyEZ - Taking the first step</title>
+        <description>&lt;p&gt;It's been a long time coming, but this morning I finally found the time to take the first steps in exploring Junos OS PyEZ.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;&lt;em&gt;Junos OS PyEZ&lt;/em&gt; is a Python &quot;micro-framework&quot; to remotely manage or automate Junos OS devices. The user is &lt;strong&gt;&lt;em&gt;NOT&lt;/em&gt;&lt;/strong&gt; required to be a software programmer, have sophisticated knowledge of Junos OS, or have a complex understanding of the Junos OS XML API.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Installing the python library is superbly simple with pip.&lt;/p&gt;
+&lt;pre&gt;pip install junos-eznc&lt;/pre&gt;
+&lt;p&gt;Given this was a first set I haven't done anything too complex, this script finds the active route to cwan management from my SRX, with no unstructured access to the Junos router.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot; hljs python&quot;&gt;#!/usr/local/bin/python2.7
+from pprint import pprint as pp
+from jnpr.junos import Device
+import dns.resolver
+
+# cwan3 mgmt route
+cwan_rt = &quot;10.3.23.0/25&quot;
+# cwan3 name server
+cwan_ns = [&quot;10.58.68.5&quot;]
+
+
+def cwan_revdns(ip):
+    on_cwan_dns = dns.resolver.Resolver()
+    on_cwan_dns.nameservers = cwan_ns
+    addr = dns.reversename.from_address(ip)
+    return str(on_cwan_dns.query(addr,&quot;PTR&quot;)[0])
+
+
+
+dev = Device(host='10.58.68.254', user='aijayadams' )
+dev.open()
+
+
+from jnpr.junos.factory import loadyaml
+globals().update( loadyaml('junos_table_definitions.yml') )
+
+rt_table = RouteTable(dev)
+rt_table.get()
+
+interface_table = InterfaceTable(dev)
+interface_table.get()
+
+print &quot;cwan3 to %s via %s&quot; % (cwan_revdns(rt_table[cwan_rt].to), rt_table[cwan_rt].via)
+
+dev.close()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And the YAML (junos_table_definitions.yml)&lt;/p&gt;
+&lt;pre&gt;---
+RouteTable:
+  rpc: get-route-information
+  args_key: destination
+  item: route-table/rt
+  key: rt-destination
+  view: ActiveRouteView
+ 
+ActiveRouteView:
+  groups:
+    nh: 'rt-entry[current-active]/nh[selected-next-hop]'
+  fields_nh:
+    to: to
+    via: via
+ 
+InterfaceTable:
+  rpc: get-interface-information
+  args_key: interface-name
+  item: physical-interface/logical-interface
+  key: name
+  view: InterfaceView
+ 
+InterfaceView:
+  fields:
+    description: description
+&lt;/pre&gt;
+&lt;p&gt;&lt;img class=&quot;alignnone wp-image-296 size-large&quot; src=&quot;/blog//assets/wp-content/uploads/2014/04/Screenshot-2014-04-18-14.25.25.png&quot; alt=&quot;PyEZ Hello World&quot; width=&quot;474&quot; height=&quot;265&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 18 Apr 2014 14:55:20 -0700</pubDate>
+        <link>https://web.waveb.io/blog//junos-os-pyez-taking-the-first-step</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//junos-os-pyez-taking-the-first-step</guid>
+        
+        <category>Networking</category>
+        
+        <category>Python</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>SRX 110 IPv6 on Internode</title>
+        <description>&lt;p&gt;I'm sure you all know the last couple of releases of Junos for SRX branch series have been working super hard to get DHCPv6 PD working properly. As a newcomer to the world of ISPs offering native IPv6 I was quite excited to get connected, and immediately disappointed that all my googling on the topic of &quot;SRX Internode IPv6&quot; and similar terms only turned up posts from years ago lamenting Junipers failing to include the features in their then (and now) much touted SRX platform.&lt;/p&gt;
+&lt;p&gt;So after a little bit of playing around I give you a mostly OK Internode IPv6 PD Client configuration for the SRX110 running 12.1X46-D10.2.&lt;/p&gt;
+&lt;pre class=&quot;EnlighterJSRAW&quot; data-enlighter-language=&quot;java&quot;&gt;aijayadams@gw&amp;gt; show dhcpv6 client binding detail
+
+Client Interface: pp0.0
+     Hardware Address:             b0:a8:6e:68:e1:20
+     State:                        BOUND(DHCPV6_CLIENT_STATE_BOUND)
+     ClientType:                   STATEFULL
+     Lease Expires:                2014-02-19 23:28:30 UTC
+     Lease Expires in:             5897 seconds
+     Lease Start:                  2014-02-19 21:28:29 UTC
+     Bind Type:                    IA_PD
+     Client DUID:                  LL0x29-b0:a8:6e:68:e1:20
+     Rapid Commit:                 Off
+     Server Ip Address:            fe80::224:14ff:fe9a:b910
+     Client IP Prefix:             2001:44b8:3132:d600::/56
+
+DHCP options:
+    Name: server-identifier, Value: LL0x1-00:24:14:9a:b9:10
+    Name: sip-server-domain, Value: .sipinternodeon.net
+    Name: dns-recursive-server, Value: 2001:44b8:1::1,2001:44b8:2::2
+    Name: domain-serch-list
+    Name: sntp, Value: 2001:44b8:1::1&lt;/pre&gt;
+&lt;p&gt;As you can see there it essentially works, the lease comes in from Internode and the first /64 is used by the RA configured on vlan.100 to address the LAN.&lt;/p&gt;
+&lt;p&gt;&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;There is still something not quite right about the setup (or the implementation), you can see errors in the DHCPv6 counters and I've had the SRX meltdown to the point of pulling the power twice already.&lt;/p&gt;
+&lt;pre class=&quot;EnlighterJSRAW&quot; data-enlighter-language=&quot;java&quot;&gt;aijayadams@gw&amp;gt; show dhcpv6 client statistics
+
+=======================================================
+Dhcpv6 Packets dropped:
+    Total               14
+    Bad Send            14
+
+Messages received:
+    DHCPV6_ADVERTISE           4
+    DHCPV6_REPLY               17
+    DHCPV6_RECONFIGURE         0
+
+Messages sent:
+    DHCPV6_DECLINE             0
+    DHCPV6_SOLICIT             18
+    DHCPV6_INFORMATION_REQUEST 0
+    DHCPV6_RELEASE             3
+    DHCPV6_REQUEST             4
+    DHCPV6_CONFIRM             0
+    DHCPV6_RENEW               13
+    DHCPV6_REBIND              0&lt;/pre&gt;
+&lt;p&gt;So without anything more, here is my config...&lt;/p&gt;
+&lt;pre class=&quot;EnlighterJSRAW&quot; data-enlighter-language=&quot;java&quot;&gt;## Last commit: 2014-02-19 07:33:26 UTC by aijayadams
+version 12.1X46-D10.2;
+system {
+    host-name gw;
+    domain-name in.aijay.id.au;
+    root-authentication {
+        encrypted-password &quot;&amp;lt;PW&amp;gt;&quot;; ## SECRET-DATA
+    }
+    name-server {
+        8.8.8.8;
+    }
+    login {
+        user aijayadams {
+            full-name &quot;Aijay Adams&quot;;
+            uid 2002;
+            class super-user;
+            authentication {
+                encrypted-password &quot;&amp;lt;PW&amp;gt;&quot;; ## SECRET-DATA
+            }
+        }
+    }
+    services {
+        ssh {
+            root-login deny;
+        }
+        dhcp-local-server {
+            group in_aijay_id_au_DHCP {
+                interface vlan.100;
+            }
+        }
+    }
+}
+interfaces {
+    interface-range in_aijay_id_au {
+        member-range fe-0/0/0 to fe-0/0/7;
+        unit 0 {
+            family ethernet-switching {
+                vlan {
+                    members in_aijay_id_au_VLAN;
+                }
+            }
+        }
+    }
+    at-1/0/0 {
+        mtu 1540;
+        encapsulation ethernet-over-atm;
+        atm-options {
+            vpi 8;
+        }
+        dsl-options {
+            operating-mode auto;
+        }
+        unit 0 {
+            encapsulation ppp-over-ether-over-atm-llc;
+            vci 8.35;
+        }
+    }
+    pp0 {                               
+        unit 0 {
+            ppp-options {
+                pap {
+                    default-password &quot;&amp;lt;PW&amp;gt;&quot;; ## SECRET-DATA
+                    local-name &quot;&amp;lt;username&amp;gt;@internode.on.net&quot;;
+                    passive;
+                }
+            }
+            pppoe-options {
+                underlying-interface at-1/0/0.0;
+                idle-timeout 0;
+                auto-reconnect 2;
+                client;
+            }
+            family inet {
+                mtu 1460;
+                negotiate-address;
+            }
+            family inet6 {
+                dhcpv6-client {
+                    client-type statefull;
+                    client-ia-type ia-pd;
+                    update-router-advertisement {
+                        interface vlan.100;
+                    }
+                    client-identifier duid-type duid-ll;
+                }
+            }
+        }
+    }
+    vlan {
+        unit 100 {
+            family inet {
+                address 10.58.68.254/24;
+            }
+            family inet6;
+        }
+    }
+}
+routing-options {
+    rib inet6.0 {
+        static {
+            route ::/0 {
+                qualified-next-hop pp0.0;
+            }
+        }
+    }
+    static {
+        route 0.0.0.0/0 {               
+            qualified-next-hop pp0.0;
+        }
+    }
+}
+
+security {
+    forwarding-options {
+        family {
+            inet6 {
+                mode flow-based;
+            }
+        }
+    }
+    nat {
+        source {
+            rule-set src-nat-internet-bound {
+                from zone in_aijay_id_au;
+                to zone internet;
+                rule internet-bound {
+                    match {
+                        source-address 10.58.68.0/24;
+                    }
+                    then {
+                        source-nat {
+                            interface;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    policies {
+        from-zone in_aijay_id_au to-zone internet {
+            policy in_aijay_id_au-to-internet {
+                match {
+                    source-address any;
+                    destination-address any;
+                    application any;
+                }
+                then {
+                    permit;
+                }
+            }
+        }
+    }
+    zones {
+        security-zone in_aijay_id_au {
+            interfaces {
+                vlan.100 {
+                    host-inbound-traffic {
+                        system-services {
+                            ping;
+                            ssh;
+                        }
+                    }
+                }
+            }
+        }
+        security-zone internet {
+            interfaces {
+                pp0.0 {
+                    host-inbound-traffic {
+                        system-services {
+                            dhcpv6;
+                            ping;
+                        }
+                    }                   
+                }
+            }
+        }
+    }
+}
+access {
+    address-assignment {
+        pool in_aijay_id_au_POOL {
+            family inet {
+                network 10.58.68.0/24;
+                range dyn_addresses {
+                    low 10.58.68.120;
+                    high 10.58.68.200;
+                }
+                dhcp-attributes {
+                    domain-name in.aijay.id.au;
+                    name-server {
+                        192.231.203.132;
+                        192.231.203.3;
+                    }
+                    router {
+                        10.58.68.254;
+                    }                   
+                }
+            }
+        }
+    }
+}
+applications {
+    application openvpn {
+        protocol udp;
+        destination-port 1194;
+    }
+}
+vlans {
+    in_aijay_id_au_VLAN {
+        vlan-id 100;
+        l3-interface vlan.100;
+    }
+}&lt;/pre&gt;
+</description>
+        <pubDate>Wed, 19 Feb 2014 18:50:04 -0800</pubDate>
+        <link>https://web.waveb.io/blog//srx-110-ipv6-on-internode</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//srx-110-ipv6-on-internode</guid>
+        
+        <category>Networking</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>MEF CECP2.0</title>
+        <description>&lt;p&gt;Hey look, I'm a MEF CECP2.0&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;wp-image-273 size-medium&quot; src=&quot;/blog//assets/wp-content/uploads/2014/02/logo2.jpg&quot; alt=&quot;MEF CECP2.0&quot; width=&quot;300&quot; height=&quot;133&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 15 Feb 2014 09:58:43 -0800</pubDate>
+        <link>https://web.waveb.io/blog//mefcecp</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//mefcecp</guid>
+        
+        <category>Networking</category>
+        
+        <category>MEF</category>
+        
+        <category>CECP</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Newanglesey in October</title>
+        <description>&lt;p&gt;A quick video above NewAnglesey shot with a GoPro mounted on John’s turbine powered model. This was a test flight, so nothing too outrageous going on, top speed 220kmh! &lt;/p&gt;
+&lt;p&gt;&lt;iframe width=&quot;550&quot; height=&quot;305&quot; src=&quot;//www.youtube.com/embed/uVwPk3pGf2w&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 20 Oct 2013 11:32:10 -0700</pubDate>
+        <link>https://web.waveb.io/blog//newanglesey-in-october</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//newanglesey-in-october</guid>
+        
+        <category>Flying</category>
+        
+        <category>Forbes</category>
+        
+        <category>Video</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>cwan3 BGP Diverse Management</title>
+        <description>&lt;p&gt;cwan3 is built with Ubiquity wireless equipment and MikroTik routers, there are a number of provisioning and assurance applications running inside the network. These applications and services are available locally and often with redundant access for network mangers within the cwan3 environment, outside of cwan these applications have been accessible via a single path.&lt;br /&gt;
+&lt;!--more--&gt;&lt;br /&gt;
+The problem, unsurprisingly, was that when a problem arose anywhere in the path used to provide external access alarms and management access were unavailable. To combat this issue we now use redundant Internet connections with diverse cwan3 network paths to tunnel to remote management sites. Below is the (very simple) configuration from the cwan3 Mikrotiks and the remote management Junos router.&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;size-full wp-image-230&quot; alt=&quot;cwan3 Management Connectivity&quot; src=&quot;/blog//assets/wp-content/uploads/2013/10/cwan_routing.png&quot; width=&quot;528&quot; height=&quot;496&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Juniper SRX&lt;/strong&gt; Remote Management&lt;/p&gt;
+&lt;pre&gt;
+aijayadams@gw&gt; show configuration protocols bgp group un-bgp
+type external;
+multihop;
+export export-local;
+peer-as 65400;
+local-as 65005;
+neighbor 10.4.0.10 {
+    local-preference 150;
+    local-address 10.4.0.9;
+}
+neighbor 10.4.0.14 {
+    local-preference 200;
+    local-address 10.4.0.13;
+}
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Mikrotik&lt;/strong&gt; cwan3 Router&lt;/p&gt;
+&lt;pre&gt;
+[admin@nickgw01] /routing bgp&gt; export
+# oct/20/2013 09:44:33 by RouterOS 6.4
+#
+/routing bgp instance
+set default as=65400 out-filter=bgp-out redistribute-connected=yes redistribute-ospf=yes
+/routing bgp peer
+add multihop=yes name=deux.aijay.id.au remote-address=10.4.0.9 remote-as=65005 ttl=default
+&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Mikrotik&lt;/strong&gt; cwan3 Router&lt;/p&gt;
+&lt;pre&gt;
+[admin@ig01.england.id.au] /routing bgp&gt; export
+# oct/20/2013 09:55:39 by RouterOS 6.4
+#
+/routing bgp instance
+set default as=65400 out-filter=bgp-out redistribute-connected=yes redistribute-ospf=yes
+add as=65200 name=vps out-filter=vps-bgp-out redistribute-connected=yes redistribute-ospf=yes router-id=10.10.10.6
+/routing bgp peer
+add multihop=yes name=aijay remote-address=10.4.0.13 remote-as=65005 ttl=default
+&lt;/pre&gt;
+</description>
+        <pubDate>Sat, 19 Oct 2013 18:54:57 -0700</pubDate>
+        <link>https://web.waveb.io/blog//cwan3-bgp-diverse-management</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//cwan3-bgp-diverse-management</guid>
+        
+        <category>Networking</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>OS X Folder Actions for Media Conversion (mkv to mp4)</title>
+        <description>&lt;p&gt;My dear boyfriend, lover of the GUI recently issued a request. Even though ffmpeg provides a super quick, super easy way to repackage mkv files to mp4 without re-encoding any of the media contained within he wanted a GUI to do the job.&lt;/p&gt;
+&lt;p&gt;After about a minute of trying to make handbrake passthrough video I gave up and used OS X’s Folder Actions feature to bind a folder to a job. That way, all he needs to do is place the .mkv files into a special folder and wait. In a few minutes, BAM!, shiny new .mp4 container without any re-encoding.&lt;br /&gt;
+&lt;!--more--&gt;&lt;br /&gt;
+My technique uses ffmpeg to do all the actual work, so you will need to install it first. Fortunately, MacPorts and Google make this pretty easy. If you don't have ffmpeg installed &lt;a href=&quot;http://www.google.com/search?q=installing%20ffmpeg%20with%20macports&quot;&gt;go here&lt;/a&gt; for instructions.&lt;/p&gt;
+&lt;p&gt;First step is to put a simple wrapper around ffmpeg which passes the correct parametres. I put this script into my path at /usr/local/bin, so that I could use it by hand if the need ever arose.&lt;/p&gt;
+&lt;address style=&quot;padding-left: 30px;&quot;&gt;Don't forget to run 'chmod o+x /usr/local/bin/mkv_2_mp4' (or whatever your script is called) to make it executable!&lt;/address&gt;
+&lt;address&gt;
+&lt;pre&gt;
+#!/bin/bash
+OLDFILE=$1
+BASE=${OLDFILE%\.*}.mkv
+if [ &quot;${BASE}&quot; == &quot;${OLDFILE}&quot; ]; then
+  NEWFILE=${OLDFILE%\.*}.mp4
+  if [ ! -f &quot;$NEWFILE&quot; ] ; then&gt;
+    /opt/local/bin/ffmpeg -i &quot;${OLDFILE}&quot; -acodec copy -vcodec copy &quot;${NEWFILE}&quot;
+    rm -rf &quot;${OLDFILE}&quot;
+  fi
+fi
+&lt;/pre&gt;&lt;/address&gt;
+&lt;p&gt;Next you will need to write an Apple Script which can be attached as the Folder Action.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;aligncenter wp-image-221 size-full&quot; src=&quot;/blog//assets/wp-content/uploads/2013/02/Screen-Shot-2013-02-05-at-8.32.16-PM.png&quot; alt=&quot;Folder Action Script&quot; width=&quot;716&quot; height=&quot;495&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Once you are happy with your script it will need to be copied to &quot;/Library/Scripts/Folder Action Scripts&quot;. With the script in place you can select the folder to bind the action.&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;aligncenter wp-image-222 size-full&quot; src=&quot;/blog//assets/wp-content/uploads/2013/02/Screen-Shot-2013-02-05-at-8.34.10-PM.png&quot; alt=&quot;Folder Action&quot; width=&quot;319&quot; height=&quot;491&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;aligncenter wp-image-223 size-full&quot; src=&quot;/blog//assets/wp-content/uploads/2013/02/Screen-Shot-2013-02-05-at-8.37.23-PM.png&quot; alt=&quot;Select Folder Action&quot; width=&quot;542&quot; height=&quot;467&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;And that's it, with the Apple Script attached to the folder you should be done! Try dragging an mkv file in and having it repackaged as an mp4. Simple.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 05 Feb 2013 19:50:30 -0800</pubDate>
+        <link>https://web.waveb.io/blog//os-x-folder-actions-for-media-conversion-mkv-to-mp4</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//os-x-folder-actions-for-media-conversion-mkv-to-mp4</guid>
+        
+        <category>bash</category>
+        
+        <category>Media</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>SSH Authentication, Private Key + YubiKey</title>
+        <description>&lt;p&gt;Does your home network really need the protection of two-factor authentication? Probably not, but Yubico have made it so easy to do that you should probably implement it anyway.&lt;/p&gt;
+&lt;p&gt;There are an unimaginable variety of ways to integrate YubiKey two-factor authentication into almost any device, service or platform. There exist PAM modules, Windows Server components, Java libraries, C libraries, Active X and Secure Web APIs to verify one time passwords [&lt;a href=&quot;http://www.yubico.com/develop/open-source-software/low-level-library/&quot;&gt;http://www.yubico.com/develop/open-source-software/low-level-library/&lt;/a&gt;]. You can choose to utilise the &lt;a style=&quot;line-height: 1.714285714; font-size: 1rem;&quot; href=&quot;http://www.yubico.com/products/services-software/yubicloud/&quot;&gt;YubiCloud &lt;/a&gt;validation servers, or install your own either as a virtual appliance, PHP Application or Python Application [&lt;a style=&quot;line-height: 1.714285714; font-size: 1rem;&quot; href=&quot;http://www.yubico.com/develop/open-source-software/validation-server/&quot;&gt;http://www.yubico.com/develop/open-source-software/validation-server/&lt;/a&gt;].&lt;/p&gt;
+&lt;p&gt;The variety is so great it seems almost overwhelming at first (at least, that is how I felt). I’m going to share with you what I think is a good place to start, it may not be the most complete deployment, but it will give you a good feel for how you can use your new two-factor authentication.&lt;/p&gt;
+&lt;p&gt;Before obtaining my Yubikeys I used a Private Key to authenticate to my home Linux box, and I encountered a little bit of uncomfortable confusion when the realisation that I would be unable to use the YubiPAM module in concert with my Private Key settled in. Fortunately for all of us caught in this situation &lt;a href=&quot;https://www.berrange.com&quot;&gt;Daniel Berrange&lt;/a&gt; wrote a very useful &lt;a href=&quot;https://www.berrange.com/posts/2011/12/18/multi-factor-ssh-authentication-using-yubikey-and-ssh-public-keys-together/&quot;&gt;post&lt;/a&gt;, including some example code, explaining how he was able to overcome this problem.&lt;/p&gt;
+&lt;p&gt;In summary, the user is logged in using their SSH Private Key as normal. Once the user has been logged in the 'ForceCommand' parameter of SSHD spawns a shell script which prompts for the one time password and performs YubiKey verification. Only when verification is successful is the standard user shell invoked.&lt;/p&gt;
+&lt;p&gt;While Daniel's method works brilliantly, I have a requirement which requires a slight modification from his method. In order to allow SCP using clients such as transmission, I only want one time passwords to be required for a subset of users.&lt;/p&gt;
+&lt;p&gt;[caption id=&quot;attachment_197&quot; align=&quot;alignnone&quot; width=&quot;811&quot;]&lt;img class=&quot;wp-image-197 size-full&quot; src=&quot;/blog//assets/wp-content/uploads/2013/01/SSH-Authentication-Flow.png&quot; alt=&quot;Two Factor SSH Authentication Flow&quot; width=&quot;811&quot; height=&quot;352&quot; /&gt; Two Factor SSH Authentication Flow[/caption]&lt;/p&gt;
+&lt;p&gt;It occurs to me that the best way to achieve this is to use the /etc/passwd file to direct accounts to the correct intermediate shell, /bin/scponly if it is a file upload / download account, and /bin/yubishell if it is an interactive account.&lt;/p&gt;
+&lt;p&gt;To support my authentication flow we use a slightly modified jailed shell for interactive users.&lt;/p&gt;
+&lt;pre class=&quot;lang:default decode:true&quot;&gt;#!/bin/bash
+
+# name: /bin/yubishell
+#
+# desc: verify users OTP with YubiCloud before spawning shell.
+TRUSTED_KEYS_FILE=/etc/yubikeyid
+YUBICO_API_ID=0000
+
+STD=&quot;\033[0;39m&quot;
+OK=&quot;\033[1;32m[i]$STD&quot;
+ERR=&quot;\033[1;31m[e]$STD&quot;
+
+##################################################
+## Disconnect clients trying to exit the script ##
+##################################################
+trap disconnect INT
+
+disconnect() {
+  sleep 1
+  kill -9 $PPID
+  exit 1
+}
+
+if test -z &quot;$USER&quot;
+then
+  disconnect
+fi
+
+####################################
+## Get user-trusted yubikeys list ##
+####################################
+if [ ! -f $TRUSTED_KEYS_FILE ]
+then
+  disconnect
+fi
+
+TRUSTED_KEYS=`grep &quot;${USER}:&quot; $TRUSTED_KEYS_FILE | sed -e &quot;s/${USER}://&quot; | sed -e 's/:/\n/g'`
+
+#######################################
+## Get the actual OTP                ##
+#######################################
+echo -ne &quot;Yubikey Please&quot;
+read -s  OTP
+echo
+KEY_ID=${OTP:0:12}
+
+#######################################
+## Iterate through trusted keys list ##
+#######################################
+for trusted in ${TRUSTED_KEYS[@]}
+do
+  if test &quot;$KEY_ID&quot; = &quot;$trusted&quot;
+  then
+    if wget &quot;https://api.yubico.com/wsapi/verify?id=$YUBICO_API_ID&amp;amp;otp=$OTP&quot; -O - 2&amp;gt; /dev/null | grep &quot;status=OK&quot; &amp;gt; /dev/null
+    then
+      exec &quot;/bin/bash&quot;
+      disconnect
+    else
+      disconnect
+    fi
+  fi
+done
+disconnect&lt;/pre&gt;
+&lt;p&gt;With the /bin/yubishell in place all that remains is to assign our YubiKey users by modifying their default shell.&lt;/p&gt;
+&lt;pre&gt;aijayadams:x:1000:1000:Aijay Adams,,,:/home/aijayadams:/bin/yubishell
+aijayadams_scp:x:1001:1000:Aijay Adams SCP,,,:/home/aijayadams_scp:/bin/scponly&lt;/pre&gt;
+&lt;p&gt;And that's it folks! It's a simple way to introduce YubiKey Two Factor Authentication, using the YubiCloud Web Service for OTP verification on your Linux server without giving up Private Key based authentication!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 18 Jan 2013 13:32:32 -0800</pubDate>
+        <link>https://web.waveb.io/blog//ssh-authentication-private-key-yubikey</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//ssh-authentication-private-key-yubikey</guid>
+        
+        <category>Linux</category>
+        
+        <category>Security</category>
+        
+        <category>yubikey</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Virtual Routing and Forwarding (VRF) in Linux</title>
+        <description>&lt;p&gt;If you addressed a private network at anytime in the last 17 years you would have been well advised to select your address space from the IANA reserved &lt;a href=&quot;http://tools.ietf.org/html/rfc1918&quot;&gt;RFC1918&lt;/a&gt; ranges. At the time the RFC was published I was a whole 7 years old, and my computer skills may have extended as far as 'if' statements in batch scripts learnt from the MS-DOS Version 5 User Guide. It would be at least another 2 or 3 years before I would come to understand the most basic concepts of &lt;a href=&quot;http://en.wikipedia.org/wiki/Internet_protocol_suite&quot;&gt;TCP/IP&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Despite the age of the private network reserved address ranges many networks are older, and through what I can only assume is a combination of ignorance and avoidance some of these networks still use public address space on private networks. If the operator of the private network owns the public space the worst we can really say is that the operator is being wasteful. If the operator of the private network doesn't own the public space, or has reused it in the public internet the conflict is left for network administrators and engineers to handle.&lt;/p&gt;
+&lt;p&gt;So let's picture the problem, a private network using public addresses which are also advertised on the internet.&lt;/p&gt;
+&lt;p&gt;&lt;!--more--&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img class=&quot;aligncenter wp-image-165 size-full&quot; title=&quot;Address Overlap&quot; src=&quot;/blog//assets/wp-content/uploads/2012/11/Linux-VRF.png&quot; alt=&quot;&quot; width=&quot;512&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;As you can see, its not a problem until the need arises to provide a common service. Once you attempt to do this the standard methodology of routing packets based on destination address breaks down. How do we know if a packet should be sent to 1.1.1.0/24 on the private network or 1.1.1.0/24 on the internet?&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;NB. I know routing breaks more generally at this boundary, but we all know about &lt;a href=&quot;http://en.wikipedia.org/wiki/Virtual_Routing_and_Forwarding&quot;&gt;VRF&lt;/a&gt; or virtual-routers on our network devices.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The problem is relatively simple, we have overlapping address space so we need to consider some additional information in order to forward the packet to the correct router. Since our server has separate local interfaces (physical or virtual), one private network facing and the other internet facing we can configure iproute2 to install a different route for the overlapping 1.1.1.0/24 network on each interface. Once these separate routing tables have been established it is possible to service request from the overlapping networks as responses originating from requests on the private network facing interface will be forwarded to the private network router, similarly, responses originating from requests on the internet facing interface will be forwarded to the internet router!&lt;/p&gt;
+&lt;p&gt;First step is to create some additional routing tables which we will bind to each of our interfaces. We do this by editing the file &lt;code&gt;/etc/iproute2/rt_tables&lt;code&gt;.&lt;/code&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;pre class=&quot;lang:default decode:true&quot;&gt;#
+# reserved values
+#
+255	local
+254	main
+253	default
+0	unspec
+#
+# local
+#
+1	pri-net
+2	internet
+&lt;/pre&gt;
+&lt;p&gt;Now that we have created the new routeing tables we can associate them with the logical interfaces we use to access our private network and internet routers.&lt;/p&gt;
+&lt;pre class=&quot;lang:default decode:true&quot;&gt;ip rule add iif eth1 table pri-net prio 100
+ip rule add iif eth0 table internet prio 100&lt;/pre&gt;
+&lt;p&gt;Next we will populate these new routing tables with the information they need to deliver packets. You will notice we are adding the local subnet manually, this is important because the automagic process of adding the directly connected subnets to the routing table only occures for the default routing table, and without a directly connected network iproute2 doesn't know how to access the default gateway.&lt;/p&gt;
+&lt;pre class=&quot;lang:default decode:true&quot;&gt;ip route add 10.0.1.0/24 table pri-net dev eth1 proto static scope link
+ip route add 1.1.1.0/24 via 10.0.1.254 table pri-net dev eth1 proto static
+
+ip route add 10.0.2.0/24 table internet dev eth0 proto static scope link
+ip route add 1.1.1.0/24 via 10.0.2.254 table internet dev eth0 proto static&lt;/pre&gt;
+&lt;p&gt;Finally iproute2 needs to be told witch routing table to use when packets originate from a local address.&lt;/p&gt;
+&lt;pre class=&quot;lang:default decode:true&quot;&gt;ip rule add from 10.0.1.1/32 lookup pri-net
+ip rule add from 10.0.2.1/32 lookup internet&lt;/pre&gt;
+&lt;p&gt;We're done! Your host can now deliver services to the overlapping address ranges by selecting the routing table based on the source address of the response. You can view the routes installed in each routing table with the ip route commands.&lt;/p&gt;
+&lt;pre class=&quot;lang:default decode:true&quot;&gt;ip route list table internet
+ip route list table pri-net&lt;/pre&gt;
+&lt;p&gt;In my book it's pretty cool that this functionality is so simple in linux, but remember it is always better to address private networks with the reserved address ranges.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 09 Nov 2012 15:11:43 -0800</pubDate>
+        <link>https://web.waveb.io/blog//virtual-routing-and-forwarding-vrf-in-linux</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//virtual-routing-and-forwarding-vrf-in-linux</guid>
+        
+        <category>Networking</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Junos Space iOS</title>
+        <description>&lt;p&gt;&lt;img class=&quot;alignnone &quot; src=&quot;/blog//assets/wp-content/uploads/2012/11/20121108-095814.jpg&quot; alt=&quot;20121108-095814.jpg&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 08 Nov 2012 08:59:23 -0800</pubDate>
+        <link>https://web.waveb.io/blog//junos-space-ios</link>
+        <guid isPermaLink="true">https://web.waveb.io/blog//junos-space-ios</guid>
+        
+        <category>Junos</category>
+        
+        <category>Networking</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
